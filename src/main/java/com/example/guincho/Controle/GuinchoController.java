@@ -29,4 +29,15 @@ public class GuinchoController {
         List<Guincho> placaVeiculos = service.listar();
         return new ResponseEntity<>(placaVeiculos, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public  ResponseEntity<Void> deletar(@PathVariable Long id){
+        try{
+            service.deletarVeiculo(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

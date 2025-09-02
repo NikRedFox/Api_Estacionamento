@@ -21,4 +21,13 @@ public class GuinchoService {
      public List<Guincho>listar(){
         return guinchoRepository.findAll();
      }
+
+     public void deletarVeiculo(Long id){
+         if (guinchoRepository.existsById(id)){
+             guinchoRepository.deleteById(id);
+         }
+         else{
+             throw new RuntimeException("Veiculo não encontrado");
+         }
+     }
 }
